@@ -1,19 +1,19 @@
-# Setup Development Enviornment with Oracle Mobile Hub
+# Setup Development Environment with Oracle Mobile Hub
 Oracle Mobile Hub (OMH) is a PaaS middleware with mobile ready built-in APIs. Product has evolved from Mobile Cloud Services (MCS), Oracle Mobile Cloud Enterprise (OMCE) and Autonomous Mobile Cloud Enterprise (AMCE) to be the todays Oracle Mobile Hub.
-OMH custom APIs are basically developed with [Node.js](https://nodejs.org) and [Express](https://expressjs.com/). Once it is deployed to cloud, a [Docker container](https://www.docker.com/resources/what-container) is automatically built by the system in the cloud and it is runing as many instances as it is needing. At this step debugging of the running system is not possible except trying to understand the causing problems from diagonistics and logs.
-Setting up a development enviornment for OMH is essential for traditional debugging.
+OMH custom APIs are basically developed with [Node.js](https://nodejs.org) and [Express](https://expressjs.com/). Once it is deployed to cloud, a [Docker container](https://www.docker.com/resources/what-container) is automatically built by the system in the cloud and it is running as many instances as it is needing. At this step, debugging of the running system is not possible except trying to understand the causing problems from diagnostics and logs.
+Setting up a development environment for OMH is essential for traditional debugging.
 
 # Get started
 In order to start with OMH custom API development following things are required:
 - A computer running Windows or Mac (OSX) or Linux with stable internet connection
 - [Node.js 8.9.4](https://nodejs.org/dist/v8.9.4/) 
     - Using [nvm](https://github.com/nvm-sh/nvm) is strongly advised. It is also available for [windows](https://github.com/coreybutler/nvm-windows)
-    - The document is written assuming nvm is being used. If nvm is being used, no need to dowload node from the link above
+    - The document is written assuming nvm is being used. If nvm is being used, no need to download node from the link above
 - A Node.js debugging capable IDE/Editor. Feel free to use any editor of your choice
     - This document is prepared with [Visual Studio Code](https://code.visualstudio.com/download)
 - [OMCE Tools](https://www.oracle.com/technetwork/topics/cloud/downloads/amce-downloads-4478270.html)
     - This document is written with v18.3.1
-- In order to start with custom API development, a scaffold of the Custom API is reqired. Knowledge of [Custom API](https://docs.oracle.com/en/cloud/paas/mobile-hub/develop/custom-api-design.html#GUID-92703CA0-893D-4245-AF0E-A482886EBC95) is will be useful
+- In order to start with custom API development, a scaffold of the Custom API is required. Knowledge of [Custom API](https://docs.oracle.com/en/cloud/paas/mobile-hub/develop/custom-api-design.html#GUID-92703CA0-893D-4245-AF0E-A482886EBC95) is will be useful
 - [Git](https://git-scm.com/download/) is optional
 
 # Node.js Setup
@@ -35,7 +35,7 @@ npm i -g npm
 ```
 
 # Setup Folders
-Create a workspace folder. Within that folder create the following folders:
+Create a workspace folder. Within that folder, create the following folders:
 - `omce-tools`: This is created by extracting OMCE Tools
 - `source`: This is created by extracting scaffold of the API
 
@@ -52,14 +52,14 @@ There are two folders within OMCE Tools:
 ![OMCE Folders](./omce-folders.png)
 
 ## OracleMobileAPI
-If _OracleMobileAPI_ is not created as API on your OMH instance following steps explain how to create it. This API is for the development purpose. If multiple OMH instnaces is used for different purposes (development, production) it is not advised to setup this on production.
+If _OracleMobileAPI_ is not created as API on your OMH instance, following steps explain how to create it. This API is for the development purpose. If multiple OMH instances are used for different purposes (development, production) it is not advised to setup this on production.
 
 1. Create New API > API
 2. Upload `OracleMobileAPI.raml`. This will fill `API Display Name` and `API Name` automatically, write a short description and press `Create` button.
 3. Open the OracleMobileAPI and go to Implementation tab
 4. Upload `OracleMobileAPIImpl.zip`
 
-For each backend there is a need to associate this OracleMobileAPI to be used:
+For each backend, there is a need to associate this OracleMobileAPI to be used:
 1. Open desired backend
 2. Go to APIs tab
 3. Press `Select APIs`
@@ -67,7 +67,7 @@ For each backend there is a need to associate this OracleMobileAPI to be used:
 
 ## omce-tools
 `${workspaceFolder}` stands for full path of your workspace folder.  
-Omce tools is a node.js based program. In oder to set it up, open a command line or terminal within `${workspaceFolder}/omce-tools/omce-tools`
+Omce tools is a node.js based program. In order to set it up, open a command line or terminal within `${workspaceFolder}/omce-tools/omce-tools`
 ```shell
 npm i -g
 cd node-configurations
@@ -87,7 +87,7 @@ This is setting up omce-tools both locally and globally.
         3. New (bash) terminals will benefit from this change. It is possible to apply the same by entering the same line above to the current terminal
 
 # Setup Git
-Assuming git installation is complete and if git is to be used from command line command line user setup is also complete.
+Assuming git installation is complete and if git is to be used from command line command line user setup is complete.
 
 `.gitignore` file marks which files to be added or ignored to by the git system. It is advised to configure you _.gitignore_ file from this template below:
 ```
@@ -107,12 +107,9 @@ There are several things to be installed within Visual Studio code:
 - If asked from windows which terminal to use, using git-bash is advised
 
 ## Project Configuration
-VScode stores launch configuration within `.vscode/launch.json` file. Please create or modify the `${workspaceFolder}/.vscode/launch.json` file as below:
+VScode stores launch configuration within `.vscode/launch.json` file. Please create or modify the `${workspaceFolder}/.vscode/launch.json` file as below (Comment part is removed from the JSON):
 ```json
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
@@ -142,14 +139,14 @@ VScode stores launch configuration within `.vscode/launch.json` file. Please cre
 - **run-server.js** is explained later below
 
 # Source Folder
-After extracting scaffold into source folder it will look like this:  
+After extracting scaffold into source folder, it will look like this:  
 ![Source Folder](./source-folder.png)
 
 - **custom_api.js** and **custom_api.raml** can be on a different name based on your API name
-- **toolsConfig.json** is the configuration file to be populated which the **omce-tools** are using to communicate with OMH cloud services. Some of the values are pre-populated by the custom API, some of them are to be obtained from the Web Console. Details are explained below
+- **toolsConfig.json** is the configuration file to be populated which the **omce-tools** are using to communicate with OMH cloud services. Some of the values are pre-populated by the custom API; some of them are to be obtained from the Web Console. Details are explained below
 - Most of the files are populated by the entries from API data (endpoints, schema, types, traits)
 - **custom_api.js** is the entry point for your endpoint code (responding with mock data entered from web console)
-- **package.json** is the regular node.js/npm pacckage.json file addional OMH run-time configuration and dependencies are placed
+- **package.json** is the regular node.js/npm pacckage.json file additional OMH run-time configuration and dependencies are placed
 
 ## toolsConfig.json
 The template obtained from scaffold will look like this:
@@ -208,7 +205,7 @@ The template obtained from scaffold will look like this:
 - **port** is the value of the TCP port which the API is to listen requests on your local computer. You can change the value as it fits to your needs. It is important to know the port value while invoking API call while running on your computer
 - **tests** are the name of the tests automatically generated to be used for the tool to invoke a call. Each test is named in `<method><Endpoint name>` Some of the values are to be updated for the desired test effect. If you do not see tests section, it is not a mistake, your API has no endpoint-method defined. Tools will continue to run without tests section, just it cannot execute test from command line
 
-Any value entered here has no effect running the code on the deployed API implementation, this is soley used for the omce-tools that simulates OMH on your local computer.
+Any value entered here has no effect running the code on the deployed API implementation, this is solely used for the omce-tools that simulates OMH on your local computer.
 
 The values entered to the json file is not sufficient. There are several more changes to be performed. Please use the updated template below:
 
@@ -255,11 +252,11 @@ The values entered to the json file is not sufficient. There are several more ch
 }
 ```
 - **authorization** section is added. Most of the values are same from **backend**
-    - **token** value starts with `Basic` separeted with a space ( ) and ends with the `<BACKEND_ANONYMOUS_KEY>`.
+    - **token** value starts with `Basic` separated with a space ( ) and ends with the `<BACKEND_ANONYMOUS_KEY>`.
 
 If you are accessing internet via proxy, in that case please refer to the tools documentation how to set proxy values within toolsConfig.json
 
-Those changes might be obsolote in future versions of OMH and the tool, anyway it will not break anything
+Those changes might be obsolete in future versions of OMH and the tool; anyway it will not break anything
 
 ## package.json
 package.json from scaffold looks like the following:
@@ -281,10 +278,10 @@ package.json from scaffold looks like the following:
 - **version** is the version of the implementation package. Do not confuse this with the API version. When deployed it will look like this:  
 ![Implementation version](./implementationVersion.png)
 - **oracleMobile** values are parsed for the run-time.
-    - **dependencies** of API and Connectors are entered corresponding sections. They are entered as key-value pairs. Key is the name, value is the version of the resource. Key is a combination of a path. See the example below
-    `<Connector Name>` above is to be replaced with actual name. This is repeated for each connector as the api
+    - **dependencies** of API and Connectors are entered corresponding sections. They are entered as key-value pairs. Key is the name; value is the version of the resource. Key is a combination of a path. See the example below
+    `<Connector Name>` above is to be replaced with actual name. This is repeated for each connector as the API
 - **configuration** section is not provided within the scaffold. This sets the container build configuration when deployed
-    - **node** value should be `8.9`. This is important! Otherwise deployed code will work differently than running on your computer. This is also has an effect of other non-controlled packages, such as express.js
+    - **node** value should be `8.9`. This is important! Otherwise, deployed code will work differently than running on your computer. This is also has an effect of other non-controlled packages, such as express.js
 - **main** is the main execution file. Feel free to modify that value with actual server entry point
 - **description** is the package description. Feel free to modify that value.
 
@@ -387,7 +384,7 @@ module.exports = function(service) {
 };
 
 ```
-2. Place a debugger at listening part; place it on the line of  ```var result = {};```
+2. Place a debugger at listening part; place it on the line of ```var result = {};```
 3. A HTTP client needs to call that endpoint. You can use cURL, Postman or a browser.  
 Main URL template is: `http://localhost:<port>/mobile/custom/<api-name>/<resource-path>`
 ```shell
