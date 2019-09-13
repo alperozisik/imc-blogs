@@ -134,7 +134,7 @@ VScode stores launch configuration within `.vscode/launch.json` file. Please cre
 }
 ```
 
-- **name** is the name to run thac custom API. If more than one API is to be debugged within the same workspace, feel free to add more configuration into the array with different name. Also change the path of the program respectively
+- **name** is the name to run that custom API. If more than one API is to be debugged within the same workspace, feel free to add more configuration into the array with different name. Also change the path of the program respectively
 - **runtimeVersion** is ensured by calling `nvm` automatically within the VScode. If nvm is not to be used, please remove that line
 - **run-server.js** is explained later below
 
